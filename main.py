@@ -141,7 +141,7 @@ def main():
                     )
                     db.add(new_ad)
                     db.commit()
-                    print(f"✔ آگهی ذخیره شد: {title}")
+                    print(f" آگهی ذخیره شد: {title}")
 
                 driver.close()
                 driver.switch_to.window(driver.window_handles[0])
