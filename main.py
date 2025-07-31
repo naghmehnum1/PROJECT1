@@ -53,7 +53,7 @@ def scrape_ad_details(driver, wait):
     try:
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "p.kt-description-row__text")))
 
-        # 📆 گرفتن تاریخ انتشار و منطقه
+        #  گرفتن تاریخ انتشار و منطقه
         try:
             location_element = driver.find_element(By.CSS_SELECTOR, "div.kt-page-title__subtitle.kt-page-title__subtitle--responsive-sized")
             full_text = location_element.text.strip()
@@ -68,7 +68,7 @@ def scrape_ad_details(driver, wait):
             details['publish_date'] = ''
             details['area'] = ''
 
-        # 💵 قیمت
+        #  قیمت
         try:
             price_elements = driver.find_elements(By.CSS_SELECTOR, "p.kt-unexpandable-row__value")
             titles = driver.find_elements(By.CSS_SELECTOR, "p.kt-unexpandable-row__title")
@@ -80,13 +80,13 @@ def scrape_ad_details(driver, wait):
         except NoSuchElementException:
             details['price'] = ''
 
-        # 📝 توضیحات
+        # توضیحات
         try:
             details['description'] = driver.find_element(By.CSS_SELECTOR, "p.kt-description-row__text.kt-description-row__text--primary").text
         except NoSuchElementException:
             details['description'] = ''
 
-        # 📐 متراژ، سال ساخت، اتاق
+        #  متراژ، سال ساخت، اتاق
         try:
             values = driver.find_elements(By.CSS_SELECTOR, "td.kt-group-row-item.kt-group-row-item__value.kt-group-row-item--info-row")
             if len(values) >= 3:
@@ -98,7 +98,7 @@ def scrape_ad_details(driver, wait):
 
         return details
     except TimeoutException:
-        print("❌ بارگذاری جزئیات آگهی زمان‌بر بود.")
+        print(" بارگذاری جزئیات آگهی زمان‌بر بود.")
         return None
 
 def main():
